@@ -11,7 +11,7 @@ using Microsoft.Extensions.Logging;
 namespace MicroRabbit.Banking.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BankingController : ControllerBase
     {
         private readonly IAccountService _accountService;
@@ -29,7 +29,7 @@ namespace MicroRabbit.Banking.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] AccountTransfer accountTransfer)
+        public IActionResult Post(AccountTransfer accountTransfer)
         {
             _accountService.Tranfer(accountTransfer);
             return Ok(accountTransfer);

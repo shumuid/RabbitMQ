@@ -46,6 +46,8 @@ namespace MicroRabbit.Banking.Api
             services.AddMediatR(typeof(Startup));
             
             RegisterServices(services);
+
+            services.AddCors();
         }
 
         private void RegisterServices(IServiceCollection services)
@@ -72,6 +74,9 @@ namespace MicroRabbit.Banking.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //CORS cross-origin resource sharing middleware
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
